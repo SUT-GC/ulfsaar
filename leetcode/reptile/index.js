@@ -13,6 +13,7 @@ var app = new Vue({
         },
         userInfo: [],
         newNickName: "",
+        dataUrl: "http://haoyugg.cn:9090/"
     },
     methods: {
         asyncCommitBoard() {
@@ -23,7 +24,7 @@ var app = new Vue({
             // }, this.refreshMT)
         },
         getCommitBoardData() {
-            this.$http.get("http://localhost:9090/").then(function (response) {
+            this.$http.get(this.dataUrl).then(function (response) {
                 this.fillCommitBoard(response.body)
 
             }, function (response) {
@@ -84,7 +85,7 @@ var app = new Vue({
                 return
             }
 
-            this.$http.post("http://localhost:9090/unregister", deleteNickName).then(function (response) {
+            this.$http.post(this.dataUrl + "unregister", deleteNickName).then(function (response) {
                 console.log(response.body)
 
             }, function (response) {
@@ -97,7 +98,7 @@ var app = new Vue({
         addNewNick() {
             let newNick = this.newNickName;
             if (newNick.length > 0) {
-                this.$http.post("http://localhost:9090/register", newNick).then(function (response) {
+                this.$http.post(this.dataUrl + "register", newNick).then(function (response) {
                     console.log(response.body)
 
                 }, function (response) {

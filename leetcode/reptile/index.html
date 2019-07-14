@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="index.css">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>leetcode sum</title>
+</head>
+<body>
+<div id="app">
+    <div class="commit-board">
+        <el-card class="commit-board-cart">
+            <ve-line :data="commitData" :settings="commitSetting"></ve-line>
+        </el-card>
+    </div>
+    <div class="operate-board">
+        <el-card class="commit-board-cart">
+            <template>
+                <el-table :data="userInfo" style="width: 100%">
+                    <el-table-column label="Name" prop="name"></el-table-column>
+                    <el-table-column align="right">
+                        <template slot="header" slot-scope="scope">
+                            <el-button size="mini" @click="showAddBlog()">
+                                Add
+                            </el-button>
+                        </template>
+                        <template slot-scope="scope">
+                            <el-button size="mini" @click="handleShow(scope.$index, scope.row)">
+                                Show
+                            </el-button>
+                            <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">
+                                Delete
+                            </el-button>
+                        </template>
+                    </el-table-column>
+                </el-table>
+            </template>
+        </el-card>
+    </div>
+    <div class="dialog">
+        <el-dialog title="提示" :visible.sync="addBlogShow" width="70%" :before-close="handleCloseAddNewNick()">
+            <el-input v-model="newNickName" placeholder="input new user nickname"></el-input>
+            <span slot="footer" class="dialog-footer">
+                <el-button type="primary" @click="addNewNick()">确 定</el-button>
+            </span>
+        </el-dialog>
+    </div>
+</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.0"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="//unpkg.com/echarts/dist/echarts.min.js"></script>
+<script src="//unpkg.com/v-charts/lib/index.min.js"></script>
+<script src="index.js"></script>
+<script src="utils.js"></script>
+</html>

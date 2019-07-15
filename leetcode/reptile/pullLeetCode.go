@@ -9,7 +9,7 @@ import (
 	"time"
 )
 
-const url string = "https://leetcode.com/api/user_submission_calendar"
+const url string = "https://leetcode-cn.com/api/user_submission_calendar"
 
 type UserCommit struct {
 	NickName string

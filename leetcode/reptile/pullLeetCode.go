@@ -79,6 +79,12 @@ func formatEasyRead(userCommits map[string]UserCommit) map[int64]map[string]int 
 }
 
 func asyncPull() {
+	defer func() {
+		if err := recover(); err != nil {
+			fmt.Println("get error", err)
+		}
+	}()
+
 	for {
 		for k, _ := range total {
 			total[k] = PullLeetCodeUser(k)

@@ -67,7 +67,7 @@ var app = new Vue({
             }
 
             for (let index in totalNick) {
-                this.userInfo.push({"name": totalNick[index], "url": "https://leetcode.com/" + totalNick[index]})
+                this.userInfo.push({"name": totalNick[index], "url": "https://leetcode-cn.com/u/" + totalNick[index]})
             }
             console.log(totalTime);
         },
